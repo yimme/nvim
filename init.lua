@@ -30,6 +30,9 @@ vim.opt.showmode = false
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 
+-- Enable smart indent
+vim.opt.smartindent = true
+
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -465,7 +468,9 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {
+          filetypes = { 'javascript', 'typescript', 'vue' },
+        },
         --
 
         lua_ls = {
