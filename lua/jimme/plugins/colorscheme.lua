@@ -4,11 +4,24 @@ return {
   name = 'catpuccin',
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
-    require('catppuccin').setup { transparent_background = true }
+    require('catppuccin').setup {}
   end,
   init = function()
     -- Load the colorscheme here.
-    vim.cmd.colorscheme 'catppuccin-mocha'
+    local hour = tonumber(os.date '%H')
+    if hour >= 6 and hour < 12 then
+      -- Dawn (6 AM - 12 PM)
+      vim.cmd.colorscheme 'catppuccin-frappe'
+    elseif hour >= 12 and hour < 18 then
+      -- Noon (12 PM - 6 PM)
+      vim.cmd.colorscheme 'catppuccin-latte'
+    elseif hour >= 18 and hour < 21 then
+      -- Dusk (6 PM - 9 PM)
+      vim.cmd.colorscheme 'catppuccin-macchiato'
+    else
+      -- Night (9 PM - 6 AM)
+      vim.cmd.colorscheme 'catppuccin-mocha'
+    end
 
     -- You can configure highlights by doing something like:
     vim.cmd.hi 'Comment gui=none'
