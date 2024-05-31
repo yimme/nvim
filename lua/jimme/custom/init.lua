@@ -2,4 +2,7 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  vim.api.nvim_set_keymap('n', '<leader>bj', ':bprevious<CR>', { noremap = true, silent = true }),
+  vim.api.nvim_set_keymap('n', '<leader>bk', ':bnext<CR>', { noremap = true, silent = true }),
+}

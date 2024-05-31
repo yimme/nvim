@@ -9,10 +9,10 @@ return {
   },
   config = function()
     -- Custom keybinds
-    vim.api.nvim_set_keymap('n', '<leader>b', ':Neotree toggle right<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree focus<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>r', ':Neotree refresh<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>o', ':wincmd p<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>et', ':Neotree toggle<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>ee', ':Neotree focus<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>er', ':Neotree refresh<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>eo', ':wincmd p<CR>', { noremap = true, silent = true })
 
     require('neo-tree').setup {
       open_on_setup = false,
