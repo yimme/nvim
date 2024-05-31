@@ -18,6 +18,14 @@ return {
       open_on_setup = false,
       open_on_setup_file = false,
       open_on_tab_enter = false,
+
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
+      },
     }
   end,
 }
