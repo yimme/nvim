@@ -14,10 +14,10 @@ return {
       vim.cmd.colorscheme 'catppuccin-mocha'
     elseif hour >= 12 and hour < 18 then
       -- Noon (12 PM - 6 PM)
-      vim.cmd.colorscheme 'catppuccin-frappe'
+      vim.cmd.colorscheme 'catppuccin-mocha'
     elseif hour >= 18 and hour < 21 then
       -- Dusk (6 PM - 9 PM)
-      vim.cmd.colorscheme 'catppuccin-macchiato'
+      vim.cmd.colorscheme 'catppuccin-mocha'
     else
       -- Night (9 PM - 6 AM)
       vim.cmd.colorscheme 'catppuccin-mocha'
