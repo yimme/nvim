@@ -76,7 +76,14 @@ vim.opt.tabstop = 4
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+--
 
+
+vim.keymap.set('n', '<leader>1', ':buffer 1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>2', ':buffer 2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>3', ':buffer 3<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>4', ':buffer 4<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>5', ':buffer 5<CR>', { noremap = true, silent = true })
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -720,6 +727,7 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'jimme.plugins' },
   { import = 'jimme.custom' },
+
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

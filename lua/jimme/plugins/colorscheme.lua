@@ -11,10 +11,10 @@ return {
     local hour = tonumber(os.date '%H')
     if hour >= 6 and hour < 12 then
       -- Dawn (6 AM - 12 PM)
-      vim.cmd.colorscheme 'catppuccin-frappe'
+      vim.cmd.colorscheme 'catppuccin-mocha'
     elseif hour >= 12 and hour < 18 then
       -- Noon (12 PM - 6 PM)
-      vim.cmd.colorscheme 'catppuccin-latte'
+      vim.cmd.colorscheme 'catppuccin-frappe'
     elseif hour >= 18 and hour < 21 then
       -- Dusk (6 PM - 9 PM)
       vim.cmd.colorscheme 'catppuccin-macchiato'

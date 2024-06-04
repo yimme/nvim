@@ -3,6 +3,6 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  vim.api.nvim_set_keymap('n', '<leader>bj', ':bprevious<CR>', { noremap = true, silent = true }),
-  vim.api.nvim_set_keymap('n', '<leader>bk', ':bnext<CR>', { noremap = true, silent = true }),
+  vim.api.nvim_set_keymap('n', '<leader>bp', ':bprevious<CR>', { noremap = true, silent = true }),
+  vim.api.nvim_set_keymap('n', '<leader>bn', ':bnext<CR>', { noremap = true, silent = true }),
 }
