@@ -11,7 +11,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim',
-      'nvim-telescopr/telescope.nvim',
+      'nvim-telescope/telescope.nvim',
     },
     config = function()
       require('neogit').setup {
