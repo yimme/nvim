@@ -4,6 +4,13 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Disable netrw for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Enable 24 bit color
+vim.opt.termguicolors = true
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
