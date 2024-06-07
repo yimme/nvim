@@ -418,6 +418,9 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
+        graphql = {
+          filetypes = { 'vue', 'graphql', 'typescriptreact', 'javascriptreact' },
+        },
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
