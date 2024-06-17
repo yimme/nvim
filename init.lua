@@ -68,7 +68,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '→ ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -201,6 +201,7 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
+      { 'benfowler/telescope-luasnip.nvim' },
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
@@ -240,12 +241,14 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          'luasnip',
         },
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'luasnip')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -331,6 +334,9 @@ require('lazy').setup({
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          -- Debug
+          vim.lsp.set_log_level 'debug'
+
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
@@ -392,6 +398,14 @@ require('lazy').setup({
         end,
       })
 
+      -- format after save
+      -- https://neovim.discourse.group/t/how-can-i-setup-eslint-to-format-on-save/2570
+      vim.api.nvim_create_autocmd('BufWritePost', {
+        pattern = { '*.ts', '*.ts', '*.js', '*.vue', '*.svelte' },
+        command = 'silent! EslintFixAll',
+        group = vim.api.nvim_create_augroup('MyAutocmdsJavascriptFormatting', {}),
+      })
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -400,7 +414,6 @@ require('lazy').setup({
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local ts_ft = { 'javascript', 'typescript' }
-      local vue_ft = { 'javascript', 'typescript', 'vue' }
 
       local tsdk = function()
         return vim.fn.getcwd() .. '/node_modules/typescript/lib'
@@ -421,7 +434,7 @@ require('lazy').setup({
         graphql = {
           filetypes = { 'vue', 'graphql', 'typescriptreact', 'javascriptreact' },
         },
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         tsserver = {
@@ -475,6 +488,9 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'prettierd',
+        'eslint',
+        'volar',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -525,16 +541,14 @@ require('lazy').setup({
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
+
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
         javascript = { { 'prettierd', 'prettier' } },
-        typescript = { { 'eslint_d', 'prettierd', 'prettier' } },
-        vue = { 'eslint_d' },
+        typescript = { { 'prettierd', 'prettier' } },
+        vue = { 'prettierd' },
+        json = { 'jq' },
       },
     },
   },
@@ -556,15 +570,18 @@ require('lazy').setup({
           return 'make install_jsregexp'
         end)(),
         dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
           -- {
           --   'rafamadriz/friendly-snippets',
           --   config = function()
           --     require('luasnip.loaders.from_vscode').lazy_load()
           --   end,
           -- },
+          {
+            'yimme/snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -574,6 +591,7 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'phenax/cmp-graphql',
     },
     config = function()
       -- See `:help cmp`
