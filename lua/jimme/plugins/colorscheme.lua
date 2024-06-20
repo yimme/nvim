@@ -19,20 +19,7 @@ return {
   end,
   init = function()
     -- Load the colorscheme here.
-    local hour = tonumber(os.date '%H')
-    if hour >= 6 and hour < 12 then
-      -- Dawn (6 AM - 12 PM)
-      vim.cmd.colorscheme 'catppuccin-mocha'
-    elseif hour >= 12 and hour < 18 then
-      -- Noon (12 PM - 6 PM)
-      vim.cmd.colorscheme 'catppuccin-mocha'
-    elseif hour >= 18 and hour < 21 then
-      -- Dusk (6 PM - 9 PM)
-      vim.cmd.colorscheme 'catppuccin-mocha'
-    else
-      -- Night (9 PM - 6 AM)
-      vim.cmd.colorscheme 'catppuccin-mocha'
-    end
+    vim.cmd.colorscheme 'catppuccin-mocha'
 
     -- You can configure highlights by doing something like:
     vim.cmd.hi 'Comment gui=none'
