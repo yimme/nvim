@@ -1,3 +1,8 @@
+-- Neovide stuff
+if vim.g.neovide then
+  vim.opt.linespace = 2
+  vim.o.guifont = 'Comic Code Ligatures:h16'
+end
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -15,11 +20,6 @@ vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
--- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
---
-
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -334,9 +334,6 @@ require('lazy').setup({
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          -- Debug
-          vim.lsp.set_log_level 'debug'
-
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
@@ -437,16 +434,32 @@ require('lazy').setup({
         pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        tsserver = {
+        --
+        vtsls = {
           filetypes = ts_ft,
           settings = {
-            init_options = {
-              typescript = {
-                tsdk = tsdk(),
+            typescript = {
+              inlayHints = {
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
               },
             },
           },
         },
+        -- tsserver = {
+        --   filetypes = ts_ft,
+        --   settings = {
+        --     init_options = {
+        --       typescript = {
+        --         tsdk = tsdk(),
+        --       },
+        --     },
+        --   },
+        -- },
         volar = {
           filetypes = { 'vue' },
           init_options = {
