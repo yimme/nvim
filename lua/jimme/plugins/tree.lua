@@ -14,8 +14,12 @@ return {
     require('nvim-tree').setup {
       git = {
         enable = true,
-        ignore = true,
+        ignore = false,
         timeout = 500,
+      },
+      filters = {
+        enable = true,
+        custom = { '.DS_Store' },
       },
     }
   end,
