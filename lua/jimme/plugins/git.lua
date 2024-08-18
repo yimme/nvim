@@ -6,6 +6,13 @@ return {
     end,
   },
 
+  {
+    'FabijanZulj/blame.nvim',
+    config = function()
+      require('blame').setup()
+    end,
+  },
+
   { -- Neogit
     'NeogitOrg/neogit',
     dependencies = {
