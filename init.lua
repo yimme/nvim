@@ -83,7 +83,6 @@ vim.opt.tabstop = 4
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
---
 
 vim.keymap.set('n', '<leader>1', ':buffer 1<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>2', ':buffer 2<CR>', { noremap = true, silent = true })
@@ -221,6 +220,12 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
+        file_ignore_patterns = { 'playwright-report/**/*' },
+        pickers = {
+          oldfiles = {
+            cwd_only = true,
+          },
+        },
         -- defaults = {
         --   mappings = {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
