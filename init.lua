@@ -445,16 +445,6 @@ require('lazy').setup({
             },
           },
         },
-        -- tsserver = {
-        --   filetypes = ts_ft,
-        --   settings = {
-        --     init_options = {
-        --       typescript = {
-        --         tsdk = tsdk(),
-        --       },
-        --     },
-        --   },
-        -- },
         volar = {
           filetypes = { 'vue' },
           init_options = {
