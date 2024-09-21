@@ -15,6 +15,11 @@ return {
         telescope = true,
         which_key = true,
       },
+      styles = {
+        comments = { 'italic' },
+        conditions = { 'italic' },
+        types = { 'italic' },
+      },
     }
   end,
   init = function()
