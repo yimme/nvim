@@ -10,10 +10,13 @@ return {
         gitsigns = true,
         nvimtree = true,
         treesitter = true,
+        grug_far = true,
         notify = true,
         neogit = true,
         telescope = true,
         which_key = true,
+        mason = true,
+        noice = true,
       },
       styles = {
         comments = { 'italic' },
