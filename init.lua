@@ -193,7 +193,8 @@ require('lazy').setup({
 
       { 'benfowler/telescope-luasnip.nvim' },
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      -- { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'echasnovski/mini.icons' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -434,7 +435,16 @@ require('lazy').setup({
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
+        denols = {
+          root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
+          init_options = {
+            enable = true,
+            lint = true,
+          },
+        },
         vtsls = {
+          root_dir = require('lspconfig').util.root_pattern 'package.json',
+          single_file_support = false,
           filetypes = ts_ft,
           settings = {
             typescript = {
