@@ -431,6 +431,7 @@ require('lazy').setup({
         graphql = {
           filetypes = { 'vue', 'graphql', 'typescriptreact', 'javascriptreact' },
         },
+        html = {},
         pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -733,7 +734,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'graphql' },
+      ensure_installed = { 'bash', 'c', 'html', 'css', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'graphql' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
