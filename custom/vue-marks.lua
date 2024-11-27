@@ -8,12 +8,12 @@ function M.mark_vue_tags()
     vim.api.nvim_buf_set_mark(0, 's', script_line, 0, {})
   end
 
-  local template_line = vim.fn.search('<script', 'nw')
+  local template_line = vim.fn.search('<template', 'nw')
   if template_line > 0 then
     vim.api.nvim_buf_set_mark(0, 't', template_line, 0, {})
   end
 
-  local style_line = vim.fn.search('<script', 'nw')
+  local style_line = vim.fn.search('<style', 'nw')
   if style_line > 0 then
     vim.api.nvim_buf_set_mark(0, 'c', style_line, 0, {})
   end
