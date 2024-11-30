@@ -589,12 +589,6 @@ require('lazy').setup({
           --     require('luasnip.loaders.from_vscode').lazy_load()
           --   end,
           -- },
-          {
-            'yimme/snippets',
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
-          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -614,6 +608,10 @@ require('lazy').setup({
       local luasnip = require 'luasnip'
       local lspkind = require 'lspkind'
       luasnip.config.setup {}
+
+      require('luasnip.loaders.from_lua').load {
+        paths = { '~/.config/nvim/lua/snippets' },
+      }
 
       cmp.setup {
         snippet = {

@@ -1,7 +1,7 @@
 return {
-  dir = vim.fn.stdpath 'config' .. '/custom/vue-marks.lua',
+  'yimme/vue-marks.nvim',
   ft = { 'vue' },
   config = function()
-    require 'custom.vue-marks'
+    require('vue-marks').setup()
   end,
 }
