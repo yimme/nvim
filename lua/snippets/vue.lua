@@ -69,4 +69,21 @@ ls.add_snippets('vue', {
       end,
     }
   ),
+
+  s(
+    'defineProps',
+    fmt(
+      [[
+        defineProps<{
+          {}
+        }>();
+      ]],
+      { i(0) }
+    ),
+    {
+      condition = function()
+        return vim.bo.filetype == 'vue'
+      end,
+    }
+  ),
 })
