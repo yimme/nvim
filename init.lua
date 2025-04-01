@@ -222,7 +222,9 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        file_ignore_patterns = { 'playwright-report/**/*' },
+        defaults = {
+          file_ignore_patterns = { 'playwright%-report/', 'gql/gql', 'gql/graphql' },
+        },
         pickers = {
           oldfiles = {
             cwd_only = true,
@@ -423,7 +425,6 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
         gopls = {
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
           analyses = { unusedparams = true },
@@ -433,21 +434,23 @@ require('lazy').setup({
         },
         html = {},
         pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        denols = {
-          root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
-          init_options = {
-            enable = true,
-            lint = true,
-          },
-        },
         vtsls = {
-          root_dir = require('lspconfig').util.root_pattern 'package.json',
+          root_dir = require('lspconfig').util.root_pattern('package.json', 'tsconfig.json', '.git', 'nuxt.config.ts'),
           single_file_support = false,
           filetypes = ts_ft,
           settings = {
+            vtsls = {
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+              preferences = {
+                importModuleSpecifierEnding = 'js',
+                importModuleSpecifierPreference = 'relative',
+                quotePreference = 'single',
+              },
+            },
             typescript = {
               inlayHints = {
                 parameterNames = { enabled = 'literals' },
@@ -457,7 +460,24 @@ require('lazy').setup({
                 functionLikeReturnTypes = { enabled = true },
                 enumMemberValues = { enabled = true },
               },
+              suggest = {
+                autoImports = true,
+                paths = {
+                  enabled = true,
+                },
+              },
+              preferences = {
+                importModuleSpecifier = 'relative',
+                includePackageJsonAutoImports = 'on',
+              },
             },
+          },
+          init_options = {
+            preferences = {
+              importModuleSpecifierPreference = 'relative',
+              importModuleSpecifier = 'relative',
+            },
+            hostInfo = 'neovim',
           },
         },
         volar = {
@@ -468,6 +488,18 @@ require('lazy').setup({
             },
             typescript = {
               tsdk = tsdk(),
+            },
+          },
+          settings = {
+            typescript = {
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                parameterNames = { enabled = true },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = true },
+              },
             },
           },
         },
@@ -583,12 +615,12 @@ require('lazy').setup({
           return 'make install_jsregexp'
         end)(),
         dependencies = {
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -621,16 +653,6 @@ require('lazy').setup({
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
 
-        formatting = {
-          fields = { 'abbr', 'kind', 'menu' },
-
-          expandable_indicator = true,
-          format = lspkind.cmp_format {
-            mode = 'symbol_text',
-            maxwidth = 50,
-            ellipsis_char = '...',
-          },
-        },
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
@@ -679,10 +701,49 @@ require('lazy').setup({
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'path' },
-          { name = 'graphql' },
+          { name = 'nvim_lsp', priority = 1000 },
+          { name = 'luasnip', priority = 900 },
+          { name = 'graphql', priority = 800 },
+          { name = 'buffer', priority = 700 },
+          {
+            name = 'path',
+            priority = 300,
+            entry_filter = function(entry, ctx)
+              local line = ctx.cursor_before_line
+              if line:match 'import%s+.*from%s+[\'"]' then
+                return false
+              end
+
+              local item = entry:get_completion_item()
+              if item.label and item.label:sub(1, 1) == '/' then
+                return false
+              end
+
+              return true
+            end,
+          },
+        },
+        formatting = {
+          fields = { 'abbr', 'kind', 'menu' },
+          format = function(entry, vim_item)
+            vim_item.menu = ({
+              nvim_lsp = '[LSP]',
+              luasnip = '[Snippet]',
+              buffer = '[Buffer]',
+              path = '[Path]',
+              graphql = '[GraphQL]',
+            })[entry.source.name]
+
+            if lspkind then
+              return lspkind.cmp_format {
+                mode = 'symbol_text',
+                maxwidth = 50,
+                ellipsis_char = '...',
+              }(entry, vim_item)
+            end
+
+            return vim_item
+          end,
         },
       }
     end,
