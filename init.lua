@@ -46,6 +46,17 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
+-- Enable inline diagnostics
+vim.diagnostic.config {
+  virtual_text = {
+    current_line = false,
+  },
+
+  virtual_lines = {
+    current_line = true,
+  },
+}
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -251,6 +262,7 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+      vim.keymap.set('n', '<leader>sc', builtin.colorscheme, { desc = '[Search] [C]olorschemes' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -493,6 +505,7 @@ require('lazy').setup({
           settings = {
             typescript = {
               inlayHints = {
+                disableAutomaticTypeAcquisition = { enabled = true },
                 enumMemberValues = { enabled = true },
                 functionLikeReturnTypes = { enabled = true },
                 propertyDeclarationTypes = { enabled = true },
