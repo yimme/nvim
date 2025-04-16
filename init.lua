@@ -94,6 +94,17 @@ vim.opt.tabstop = 4
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+--
+function ToggleTheme()
+  local theme = vim.o.background
+  if theme == 'dark' then
+    vim.o.background = 'light'
+  else
+    vim.o.background = 'dark'
+  end
+end
+
+vim.keymap.set('n', '<leader>tb', ToggleTheme, { noremap = true })
 
 vim.keymap.set('n', '<leader>1', ':buffer 1<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>2', ':buffer 2<CR>', { noremap = true, silent = true })
