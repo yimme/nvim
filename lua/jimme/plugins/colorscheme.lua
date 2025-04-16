@@ -17,16 +17,23 @@ return {
         mason = true,
         noice = true,
       },
+      term_colors = true,
       styles = {
         comments = { 'italic' },
         conditions = { 'italic' },
         types = { 'italic' },
+        functions = { 'italic' },
+      },
+      flavour = 'auto',
+      background = {
+        light = 'latte',
+        dark = 'mocha',
       },
     }
   end,
   init = function()
     -- Load the colorscheme here.
-    vim.cmd.colorscheme 'catppuccin-mocha'
+    vim.cmd.colorscheme 'catppuccin'
 
     -- You can configure highlights by doing something like:
     vim.cmd.hi 'Comment gui=none'
