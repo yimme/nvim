@@ -24,7 +24,7 @@ return {
         types = { 'italic' },
         functions = { 'italic' },
       },
-      flavour = 'auto',
+      flavour = 'mocha',
       background = {
         light = 'latte',
         dark = 'mocha',
