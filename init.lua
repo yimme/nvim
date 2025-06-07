@@ -46,14 +46,14 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
--- Enable inline diagnostics
 vim.diagnostic.config {
-  virtual_text = {
-    current_line = false,
-  },
-
-  virtual_lines = {
-    current_line = true,
+  virtual_text = true,
+  virtual_lines = false,
+  priority = {
+    [vim.diagnostic.severity.ERROR] = 100,
+    [vim.diagnostic.severity.WARN] = 90,
+    [vim.diagnostic.severity.INFO] = 80,
+    [vim.diagnostic.severity.HINT] = 70,
   },
 }
 
@@ -502,6 +502,17 @@ require('lazy').setup({
             },
             hostInfo = 'neovim',
           },
+          on_init = function(client)
+            local bufnr = vim.api.nvim_get_current_buf()
+            for _, c in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
+              if c.name == 'volar' then
+                vim.schedule(function()
+                  client.stop()
+                end)
+                return
+              end
+            end
+          end,
         },
         volar = {
           filetypes = { 'vue' },
@@ -514,6 +525,9 @@ require('lazy').setup({
             },
           },
           settings = {
+            experimental = {
+              templateStrictTypeCheck = true,
+            },
             typescript = {
               inlayHints = {
                 disableAutomaticTypeAcquisition = { enabled = true },
@@ -817,7 +831,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'css', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'graphql' },
+      ensure_installed = { 'bash', 'c', 'html', 'css', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'javascript', 'vue', 'graphql' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
