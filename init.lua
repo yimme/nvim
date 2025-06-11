@@ -502,19 +502,8 @@ require('lazy').setup({
             },
             hostInfo = 'neovim',
           },
-          on_init = function(client)
-            local bufnr = vim.api.nvim_get_current_buf()
-            for _, c in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
-              if c.name == 'volar' then
-                vim.schedule(function()
-                  client.stop()
-                end)
-                return
-              end
-            end
-          end,
         },
-        volar = {
+        vue_ls = {
           filetypes = { 'vue' },
           init_options = {
             vue = {
@@ -573,11 +562,13 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'prettierd',
         'eslint',
-        'volar',
+        'vue_ls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_enable = {},
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
