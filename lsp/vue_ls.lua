@@ -1,4 +1,11 @@
 return {
+  cmd = { 'vue-language-server', '--stdio' },
+  filetypes = { 'vue' },
+  init_options = {
+    vue = {
+      hybridMode = false,
+    },
+  },
   on_init = function(client)
     client.handlers['tsserver/request'] = function(_, result, context)
       local clients = vim.lsp.get_clients { bufnr = context.bufnr, name = 'vtsls' }
