@@ -17,7 +17,7 @@ return {
         version = 'LuaJIT',
       },
       diagnostics = {
-        globals = { 'vim' },
+        globals = { 'vim', 'Snacks' },
       },
       workspace = {
         checkThirdParty = false,
