@@ -2,6 +2,13 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = '→ ',
+  space = '·',
+  eol = '¬',
+}
+
 vim.diagnostic.config {
   virtual_text = true,
   signs = true,

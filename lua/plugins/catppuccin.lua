@@ -11,6 +11,11 @@ return {
         gitsigns = true,
         treesitter = true,
         snacks = true,
+        indent_blankline = {
+          enabled = true,
+          scope_color = 'yellow',
+          colored_indent_levels = false,
+        },
       },
       term_colors = true,
       styles = {
