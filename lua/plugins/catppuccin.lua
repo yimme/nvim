@@ -12,6 +12,12 @@ return {
         snacks = true,
       },
       term_colors = true,
+      styles = {
+        comments = { 'italic' },
+        conditions = { 'italic' },
+        types = { 'italic' },
+        functions = { 'italic' },
+      },
     }
     vim.cmd [[colorscheme catppuccin]]
   end,
