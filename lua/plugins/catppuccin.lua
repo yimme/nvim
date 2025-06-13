@@ -9,6 +9,7 @@ return {
         mason = true,
         telescope = true,
         treesitter = true,
+        snacks = true,
       },
       term_colors = true,
     }
