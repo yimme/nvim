@@ -3,11 +3,25 @@ vim.o.expandtab = true
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.breakindent = true
+
+vim.opt.splitright = true -- open new splits on the right
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.list = true
+vim.opt.clipboard = 'unnamedplus'
+
+vim.opt.termguicolors = true
+
+vim.g.have_nerd_font = true
+vim.opt.showmode = false -- Hide mode because already in lualine
+
+vim.opt.scrolloff = 10 -- lines before scroll
+
+vim.opt.list = true -- Show list chars
 vim.opt.listchars = {
   tab = '→ ',
   space = '·',
