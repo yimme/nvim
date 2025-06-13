@@ -7,6 +7,8 @@ return {
   config = function()
     require('nvim-treesitter').setup {
       highlight = { enable = true },
+      auto_install = true,
+      ensure_installed = { 'vue', 'html', 'css', 'lua' },
     }
   end,
 }
