@@ -5,7 +5,11 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    picker = {},
+    animate = { enabled = true },
+    picker = { enabled = true },
+    explorer = { enabled = true },
+    notifier = { enabled = true },
+    statuscolumn = { enabled = true },
   },
   keys = {
     {
