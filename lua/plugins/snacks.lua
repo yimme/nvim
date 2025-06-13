@@ -10,6 +10,7 @@ return {
     explorer = { enabled = true },
     notifier = { enabled = true },
     statuscolumn = { enabled = true },
+    dashboard = { enabled = true },
   },
   keys = {
     {
