@@ -8,6 +8,7 @@ return {
         cmp = true,
         mason = true,
         telescope = true,
+        gitsigns = true,
         treesitter = true,
         snacks = true,
       },
