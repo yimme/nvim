@@ -6,7 +6,6 @@ vim.opt.list = true
 vim.opt.listchars = {
   tab = '→ ',
   space = '·',
-  eol = '¬',
 }
 
 vim.diagnostic.config {
