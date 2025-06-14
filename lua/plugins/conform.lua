@@ -11,6 +11,7 @@ return {
         formatters_by_ft = {
           lua = { 'stylua' },
           vue = { 'prettierd' },
+          python = { 'autopep8' },
         },
       }
     end,

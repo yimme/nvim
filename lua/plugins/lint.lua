@@ -9,7 +9,8 @@ return {
       javascriptreact = { 'eslint_d' },
       typescript = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
-      vue = { 'eslint_d' }, -- Optional, if using Vue
+      vue = { 'eslint_d' },
+      python = { 'flake8' },
     }
 
     -- Auto-lint on save
