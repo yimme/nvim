@@ -18,6 +18,7 @@ vim.opt.termguicolors = true
 
 vim.g.have_nerd_font = true
 vim.opt.showmode = false -- Hide mode because already in lualine
+vim.opt.cmdheight = 0 -- hide the whole bar
 
 vim.opt.scrolloff = 10 -- lines before scroll
 
