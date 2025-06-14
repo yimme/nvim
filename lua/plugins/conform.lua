@@ -10,7 +10,9 @@ return {
         },
         formatters_by_ft = {
           lua = { 'stylua' },
-          vue = { 'prettierd' },
+          vue = { 'eslint_d', 'prettierd' },
+          typescript = { 'eslint_d', 'prettierd' },
+          javascript = { 'eslint_d', 'prettierd' },
           python = { 'autopep8' },
         },
       }
