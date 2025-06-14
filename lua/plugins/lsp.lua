@@ -10,7 +10,7 @@ return {
   },
   dependencies = {
     { 'mason-org/mason.nvim', opts = {
-      ensure_installed = { 'eslint_d', 'prettierd', 'autopep8', 'flake8' },
+      ensure_installed = { 'eslint_d', 'prettierd', 'autopep8', 'flake8', 'oxlint' },
     } },
     -- { 'neovim/nvim-lspconfig' },
   },

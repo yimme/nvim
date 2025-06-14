@@ -7,7 +7,7 @@ return {
   opts = {
     animate = { enabled = true },
     picker = { enabled = true },
-    explorer = { enabled = true },
+    --explorer = { enabled = true },
     notifier = { enabled = true },
     statuscolumn = { enabled = true },
     dashboard = { enabled = true },
@@ -48,12 +48,12 @@ return {
       end,
       desc = 'Notification History',
     },
-    {
-      '<leader>e',
-      function()
-        Snacks.explorer()
-      end,
-      desc = 'File Explorer',
-    },
+    -- {
+    --   '<leader>e',
+    --   function()
+    --     Snacks.explorer()
+    --   end,
+    --   desc = 'File Explorer',
+    -- },
   },
 }
