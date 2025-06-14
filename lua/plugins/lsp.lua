@@ -4,7 +4,7 @@ return {
   'mason-org/mason-lspconfig.nvim',
   opts = {
     ensure_installed = ensure_installed,
-    automatic_enable = { 'lua_ls', 'cssls' },
+    automatic_enable = { 'lua_ls', 'cssls', 'gopls' },
   },
   dependencies = {
     { 'mason-org/mason.nvim', opts = {
