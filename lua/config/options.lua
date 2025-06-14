@@ -36,6 +36,8 @@ vim.diagnostic.config {
   severity_sort = true,
 }
 
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap = true, silent = true })
+
 local augroup = vim.api.nvim_create_augroup('lsp_attach_keymaps', { clear = true })
 
 vim.api.nvim_create_autocmd('LspAttach', {
