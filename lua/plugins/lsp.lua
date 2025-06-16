@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-local ensure_installed = { 'lua_ls', 'vue_ls@3.0.0-alpha.10', 'vtsls', 'cssls', 'gopls', 'pyright' }
-=======
-local ensure_installed = { 'lua_ls', 'vue_ls@3.0.0-beta.1', 'vtsls', 'cssls', 'gopls' }
->>>>>>> Stashed changes
+local ensure_installed = { 'lua_ls', 'vue_ls@3.0.0-beta.2', 'vtsls', 'cssls', 'gopls', 'pyright' }
 
 return {
   'mason-org/mason-lspconfig.nvim',
