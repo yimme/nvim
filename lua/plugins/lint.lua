@@ -10,19 +10,28 @@ return {
       desc = 'Trigger linting for current buffer',
     },
   },
-  config = function()
-    local lint = require 'lint'
-
-    lint.linters_by_ft = {
+  opts = {
+    linters_by_ft = {
       javascript = { 'eslint_d' },
       javascriptreact = { 'eslint_d' },
-      typescript = { 'oxlint', 'eslint_d' },
+      typescript = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
-      vue = { 'oxlint', 'eslint_d' },
+      vue = { 'eslint_d' },
       python = { 'flake8' },
-    }
-
-    -- Auto-lint on save
+    },
+    linters = {
+      eslint_d = {
+        args = {
+          '--no-warn-ignored',
+          function()
+            return vim.api.nvim_buf_get_name(0)
+          end,
+        },
+      },
+    },
+  },
+  config = function()
+    local lint = require 'lint'
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
 
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' }, {
