@@ -1,4 +1,4 @@
-local ensure_installed = { 'lua_ls', 'vue_ls@3.0.0-alpha.10', 'vtsls', 'cssls', 'gopls', 'pyright' }
+local ensure_installed = { 'lua_ls', 'vue_ls@3.0.0-alpha.10', 'vtsls', 'cssls', 'gopls', 'pyright', 'emmet_ls' }
 
 return {
   'mason-org/mason-lspconfig.nvim',
@@ -12,6 +12,6 @@ return {
     { 'mason-org/mason.nvim', opts = {
       ensure_installed = { 'eslint_d', 'prettierd', 'autopep8', 'flake8', 'oxlint' },
     } },
-    -- { 'neovim/nvim-lspconfig' },
+    { 'neovim/nvim-lspconfig' },
   },
 }
