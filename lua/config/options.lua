@@ -60,3 +60,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   end,
 })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank {
+      higroup = 'IncSearch',
+      timeout = 200,
+    }
+  end,
+})
