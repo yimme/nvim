@@ -12,6 +12,6 @@ return {
     { 'mason-org/mason.nvim', opts = {
       ensure_installed = { 'eslint_d', 'prettierd', 'autopep8', 'flake8', 'oxlint' },
     } },
-    { 'neovim/nvim-lspconfig' },
+    -- { 'neovim/nvim-lspconfig' },
   },
 }
