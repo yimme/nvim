@@ -2,7 +2,15 @@ return {
   'stevearc/oil.nvim',
   ---@module 'oil'
   ---@type oil.SetupOpts
-  opts = {},
+  opts = {
+    view_options = {
+      show_hidden = false,
+    },
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = true,
+    },
+  },
   -- Optional dependencies
   dependencies = { { 'echasnovski/mini.icons', opts = {} } },
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
