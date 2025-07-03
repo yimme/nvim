@@ -31,6 +31,7 @@ return {
           typescript = { 'eslint_d', 'prettierd' },
           javascript = { 'eslint_d', 'prettierd' },
           python = { 'autopep8' },
+          go = { 'gofmt' },
         },
         formatters = {
           eslint_d = {
