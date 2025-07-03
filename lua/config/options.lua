@@ -24,7 +24,7 @@ vim.opt.scrolloff = 10 -- lines before scroll
 
 vim.opt.list = true -- Show list chars
 vim.opt.listchars = {
-  tab = '» ',
+  tab = '┃ ',
   space = '·',
 }
 
