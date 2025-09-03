@@ -20,4 +20,11 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {},
   },
+  {
+    'f-person/git-blame.nvim',
+    event = 'VeryLazy',
+    opts = {
+      enabled = true,
+    },
+  },
 }
