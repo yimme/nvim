@@ -48,5 +48,8 @@ return {
       nargs = 1,
       complete = 'file',
     })
+    if client.server_capabilities.semanticTokensProvider and client.server_capabilitiessemanticTokensProvider.full then
+      vim.lsp.semantic_tokens.start(bufnr, client.id)
+    end
   end,
 }

@@ -4,7 +4,7 @@ return {
     branch = 'main',
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter').install { 'vue', 'go', 'typescript', 'javascript', 'lua', 'graphql', 'css', 'scss' }
+      require('nvim-treesitter').install { 'vue', 'go', 'typescript', 'javascript', 'lua', 'graphql', 'css', 'scss', 'python' }
 
       vim.api.nvim_create_autocmd('FileType', {
         pattern = { 'vue', 'go' },
