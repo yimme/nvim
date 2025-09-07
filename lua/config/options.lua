@@ -36,6 +36,18 @@ vim.diagnostic.config {
   severity_sort = true,
 }
 
+-- Show command line when recording a macro
+vim.api.nvim_create_autocmd('RecordingEnter', {
+  callback = function()
+    vim.opt.cmdheight = 1
+  end,
+})
+vim.api.nvim_create_autocmd('RecordingLeave', {
+  callback = function()
+    vim.opt.cmdheight = 0
+  end,
+})
+
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 local augroup = vim.api.nvim_create_augroup('lsp_attach_keymaps', { clear = true })
