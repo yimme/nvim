@@ -7,7 +7,7 @@ return {
       require('nvim-treesitter').install { 'vue', 'go', 'typescript', 'javascript', 'lua', 'graphql', 'css', 'scss', 'python' }
 
       vim.api.nvim_create_autocmd('FileType', {
-        pattern = { 'vue', 'go' },
+        pattern = { 'vue', 'go', 'python' },
         group = vim.api.nvim_create_augroup('treesitter_setup', { clear = true }),
         callback = function(args)
           local buf = args.buf
