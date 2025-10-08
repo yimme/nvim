@@ -48,6 +48,14 @@ return {
       end,
       desc = 'Notification History',
     },
+    -- Explorer
+    {
+      '<leader>e',
+      function()
+        Snacks.picker.explorer { hidden = true, ignored = true }
+      end,
+      desc = 'Explorer',
+    },
     -- find
     {
       '<leader>fb',
@@ -59,9 +67,9 @@ return {
     {
       '<leader>fc',
       function()
-        Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
+        Snacks.picker.files { cwd = vim.fn.getcwd() .. '/src/components' }
       end,
-      desc = 'Find Config File',
+      desc = 'Find vue components',
     },
     {
       '<leader>ff',
