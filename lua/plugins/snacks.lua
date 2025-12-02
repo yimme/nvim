@@ -6,7 +6,7 @@ return {
   ---@type snacks.Config
   opts = {
     animate = { enabled = true },
-    picker = { enabled = true },
+    picker = { enabled = true, matcher = { fuzzy = true, smartcase = true } },
     --explorer = { enabled = true },
     notifier = { enabled = true },
     statuscolumn = { enabled = true },
@@ -50,7 +50,7 @@ return {
     },
     -- Explorer
     {
-      '<leader>e',
+      '<leader>fe',
       function()
         Snacks.picker.explorer { hidden = true, ignored = true }
       end,
@@ -98,6 +98,12 @@ return {
         Snacks.picker.recent()
       end,
       desc = 'Recent',
+    },
+    {
+      '<leader>fs',
+      function()
+        Snacks.picker.lsp_references()
+      end,
     },
     -- git
     {
