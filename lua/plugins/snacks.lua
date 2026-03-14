@@ -100,7 +100,7 @@ return {
       desc = 'Recent',
     },
     {
-      '<leader>fs',
+      '<leader>gr',
       function()
         Snacks.picker.lsp_references()
       end,
