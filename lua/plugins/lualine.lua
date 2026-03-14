@@ -1,12 +1,11 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
+    'echasnovski/mini.icons',
   },
   config = function()
     require('lualine').setup {
       options = {
-        theme = 'catppuccin',
         refresh = {
           statusline = 1000,
           tabline = 1000,
