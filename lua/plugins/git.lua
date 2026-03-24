@@ -18,13 +18,11 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
-    opts = {},
-  },
-  {
-    'f-person/git-blame.nvim',
-    event = 'VeryLazy',
     opts = {
-      enabled = true,
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 250,
+      },
     },
   },
 }
