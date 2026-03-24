@@ -5,7 +5,7 @@ return {
   opts = {
     ensure_installed = ensure_installed,
     automatic_enable = {
-      exclude = { 'vue_ls', 'vtsls' },
+      exclude = { 'vtsls' },
     },
   },
   dependencies = {
