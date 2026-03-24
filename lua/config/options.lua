@@ -68,6 +68,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbols')
     map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    map('<leader>ci', function()
+      vim.lsp.buf.code_action {
+        apply = true,
+        context = { only = { 'source.addMissingImports' } },
+      }
+    end, 'Add missing [I]mports')
     map('K', vim.lsp.buf.hover, 'Hover Documentation')
     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   end,
