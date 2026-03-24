@@ -1,10 +1,14 @@
 return {
-  filetypes = { 'html', 'css', 'scss', 'javascript', 'typescript', 'vue' },
+  cmd = { 'emmet-ls', '--stdio' },
+  filetypes = { 'html', 'css', 'scss', 'vue' },
   init_options = {
     html = {
       options = {
         ['bem_enabled'] = true,
       },
+    },
+    includeLanguages = {
+      vue = 'html',
     },
   },
 }
