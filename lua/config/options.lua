@@ -16,6 +16,8 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.termguicolors = true
 
+vim.cmd [[colorscheme catppuccin]]
+
 vim.g.have_nerd_font = true
 vim.opt.showmode = false -- Hide mode because already in lualine
 vim.opt.cmdheight = 0 -- hide the whole bar

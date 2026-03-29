@@ -25,6 +25,5 @@ return {
         functions = { 'italic' },
       },
     }
-    vim.cmd [[colorscheme catppuccin]]
   end,
 }
