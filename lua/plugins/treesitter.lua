@@ -1,7 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'main',
+    branch = 'master', -- Update to main for neovim 0.12
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter').install { 'vue', 'go', 'typescript', 'javascript', 'lua', 'graphql', 'css', 'scss', 'python' }

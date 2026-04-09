@@ -15,6 +15,13 @@ return {
   cmd = { 'vue-language-server', '--stdio' },
   filetypes = { 'vue' },
   root_markers = { 'package.json' },
+  init_options = {
+    vue = {
+      hover = {
+        rich = true,
+      },
+    },
+  },
   on_init = function(client)
     local retries = 0
 

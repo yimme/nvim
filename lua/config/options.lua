@@ -16,6 +16,12 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.termguicolors = true
 
+vim.filetype.add {
+  pattern = {
+    ['%.env[%.%w]*'] = 'sh',
+  },
+}
+
 vim.cmd [[colorscheme catppuccin]]
 
 vim.g.have_nerd_font = true
