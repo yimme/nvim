@@ -21,7 +21,7 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'enter' },
+    keymap = { preset = 'super-tab' },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -36,6 +36,34 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
+      providers = {
+        lsp = {
+          transform_items = function(ctx, items)
+            if vim.bo.filetype ~= 'vue' then
+              return items
+            end
+            local in_template = false
+            local node = vim.treesitter.get_node()
+            while node do
+              if node:type() == 'template_element' then
+                in_template = true
+                break
+              end
+              node = node:parent()
+            end
+            if in_template then
+              return items
+            end
+            local emmet_client = vim.lsp.get_clients({ name = 'emmet_ls' })[1]
+            if not emmet_client then
+              return items
+            end
+            return vim.tbl_filter(function(item)
+              return item.client_id ~= emmet_client.id
+            end, items)
+          end,
+        },
+      },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

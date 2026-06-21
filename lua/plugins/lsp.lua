@@ -1,4 +1,4 @@
-local ensure_installed = { 'lua_ls', 'vue_ls', 'vtsls', 'cssls', 'gopls', 'emmet_ls', 'ty', 'postgres_lsp' }
+local ensure_installed = { 'lua_ls', 'vue_ls', 'vtsls', 'cssls', 'gopls', 'emmet_ls', 'ty', 'postgres_lsp', 'yamlls', 'dockerls' }
 
 return {
   'mason-org/mason-lspconfig.nvim',
