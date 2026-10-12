@@ -13,6 +13,10 @@ return {
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
   root_markers = { 'package.json', 'tsconfig.json' },
   settings = {
+    typescript = {
+      -- Report noUnusedParameters/noUnusedLocals etc. with the severity tsc uses (error), not as warnings
+      reportStyleChecksAsWarnings = false,
+    },
     vtsls = {
       enableMoveToFileCodeAction = true,
       autoUseWorkspaceTsdk = true,

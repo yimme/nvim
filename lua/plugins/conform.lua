@@ -20,6 +20,14 @@ return {
         return #found > 0
       end
 
+      -- Use the oxfmt LSP when it's attached (project has an oxfmt config), otherwise prettierd
+      local function js_formatters(bufnr)
+        if #vim.lsp.get_clients { bufnr = bufnr, name = 'oxfmt' } > 0 then
+          return { 'eslint_d', lsp_format = 'last', name = 'oxfmt' }
+        end
+        return { 'eslint_d', 'prettierd' }
+      end
+
       require('conform').setup {
         format_on_save = {
           timeout_ms = 1000,
@@ -27,9 +35,9 @@ return {
         },
         formatters_by_ft = {
           lua = { 'stylua' },
-          vue = { 'eslint_d', 'prettierd' },
-          typescript = { 'eslint_d', 'prettierd' },
-          javascript = { 'eslint_d', 'prettierd' },
+          vue = js_formatters,
+          typescript = js_formatters,
+          javascript = js_formatters,
           python = { 'autopep8' },
           go = { 'gofmt' },
         },
